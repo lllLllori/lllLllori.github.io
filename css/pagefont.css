@@ -1,0 +1,9 @@
+element.style {
+
+    overflow: auto;
+}
+
+p {
+    font-family: var(--global-font), -apple-system, IBM Plex Mono, monosapce, "微软雅黑", sans-serif;
+    font-size: 16px;
+}
