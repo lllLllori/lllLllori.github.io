@@ -1,0 +1,9 @@
+@font-face {
+    font-family: 'lorifont';
+    font-display: swap;
+    src: url('/font/QingNiaoHuaGuangJianLiBian-2.ttf') format("truetype");
+}
+
+body {
+    font-family: 'lorifont';
+}
