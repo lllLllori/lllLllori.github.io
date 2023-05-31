@@ -4,6 +4,81 @@
   
     
     <entry>
+      <title>测试搜索引擎</title>
+      <link href="/2023/05/31/%E6%B5%8B%E8%AF%95%E6%90%9C%E7%B4%A2%E5%BC%95%E6%93%8E/"/>
+      <url>/2023/05/31/%E6%B5%8B%E8%AF%95%E6%90%9C%E7%B4%A2%E5%BC%95%E6%93%8E/</url>
+      
+        <content type="html"><![CDATA[<h1 id="2022-05-31"><a href="#2022-05-31" class="headerlink" title="2022.05.31"></a>2022.05.31</h1><p>搜索搜索搜索搜索啊啊啊啊啊搜索引擎啊啊啊啊啊啊啊啊啊啊</p><p>abc123啊啊啊</p><p>看这里看合理看这里看哪里看那里</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 技术 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 技术 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>力扣hot100-16</title>
+      <link href="/2023/05/30/%E5%8A%9B%E6%89%A3hot100-16/"/>
+      <url>/2023/05/30/%E5%8A%9B%E6%89%A3hot100-16/</url>
+      
+        <content type="html"><![CDATA[<h4 id="105-从前序与中序遍历序列构造二叉树"><a href="#105-从前序与中序遍历序列构造二叉树" class="headerlink" title="105. 从前序与中序遍历序列构造二叉树"></a><a href="https://leetcode.cn/problems/construct-binary-tree-from-preorder-and-inorder-traversal/">105. 从前序与中序遍历序列构造二叉树</a></h4><p>给定两个整数数组 <code>preorder</code> 和 <code>inorder</code> ，其中 <code>preorder</code> 是二叉树的<strong>先序遍历</strong>， <code>inorder</code> 是同一棵树的<strong>中序遍历</strong>，请构造二叉树并返回其根节点。</p><p><strong>示例 1:</strong></p><p><img src="https://assets.leetcode.com/uploads/2021/02/19/tree.jpg" alt="img"></p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">输入: preorder = [3,9,20,15,7], inorder = [9,3,15,20,7]</span><br><span class="line">输出: [3,9,20,null,null,15,7]</span><br></pre></td></tr></table></figure><p><strong>示例 2:</strong></p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">输入: preorder = [-1], inorder = [-1]</span><br><span class="line">输出: [-1]</span><br></pre></td></tr></table></figure><p><strong>提示:</strong></p><ul><li><code>1 &lt;= preorder.length &lt;= 3000</code></li><li><code>inorder.length == preorder.length</code></li><li><code>-3000 &lt;= preorder[i], inorder[i] &lt;= 3000</code></li><li><code>preorder</code> 和 <code>inorder</code> 均 <strong>无重复</strong> 元素</li><li><code>inorder</code> 均出现在 <code>preorder</code></li><li><code>preorder</code> <strong>保证</strong> 为二叉树的前序遍历序列</li><li><code>inorder</code> <strong>保证</strong> 为二叉树的中序遍历序列</li></ul><p><strong>思路：</strong></p><p>每次从中序序列中找到前序序列的第一个，这就是构建时的根节点，然后把中序序列分为左右两段。</p><p>分别对左右两段进行同样的操作构建即可。</p><p><strong>代码：</strong></p><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Definition for a binary tree node.</span></span><br><span class="line"><span class="comment"> * struct TreeNode &#123;</span></span><br><span class="line"><span class="comment"> *     int val;</span></span><br><span class="line"><span class="comment"> *     TreeNode *left;</span></span><br><span class="line"><span class="comment"> *     TreeNode *right;</span></span><br><span class="line"><span class="comment"> *     TreeNode() : val(0), left(nullptr), right(nullptr) &#123;&#125;</span></span><br><span class="line"><span class="comment"> *     TreeNode(int x) : val(x), left(nullptr), right(nullptr) &#123;&#125;</span></span><br><span class="line"><span class="comment"> *     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) &#123;&#125;</span></span><br><span class="line"><span class="comment"> * &#125;;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function">TreeNode* <span class="title">buildTree</span><span class="params">(vector&lt;<span class="type">int</span>&gt;&amp; preorder, vector&lt;<span class="type">int</span>&gt;&amp; inorder)</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span>(preorder.<span class="built_in">empty</span>() || inorder.<span class="built_in">empty</span>()) <span class="keyword">return</span> <span class="literal">nullptr</span>;</span><br><span class="line">        TreeNode* res=<span class="keyword">new</span> <span class="built_in">TreeNode</span>(preorder[<span class="number">0</span>]);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">0</span>;i&lt;inorder.<span class="built_in">size</span>();i++)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">if</span>(inorder[i]==preorder[<span class="number">0</span>])</span><br><span class="line">            &#123;</span><br><span class="line">                vector&lt;<span class="type">int</span>&gt; _pre(preorder.<span class="built_in">begin</span>()+<span class="number">1</span>,preorder.<span class="built_in">begin</span>()+i+<span class="number">1</span>);</span><br><span class="line">                vector&lt;<span class="type">int</span>&gt; _in(inorder.<span class="built_in">begin</span>(),inorder.<span class="built_in">begin</span>()+i+<span class="number">1</span>);</span><br><span class="line">                <span class="function">vector&lt;<span class="type">int</span>&gt; <span class="title">pre_</span><span class="params">(preorder.begin()+i+<span class="number">1</span>,preorder.end())</span></span>;</span><br><span class="line">                <span class="function">vector&lt;<span class="type">int</span>&gt; <span class="title">in_</span><span class="params">(inorder.begin()+i+<span class="number">1</span>,inorder.end())</span></span>;</span><br><span class="line">                res-&gt;left=<span class="built_in">buildTree</span>(_pre,_in);</span><br><span class="line">                res-&gt;right=<span class="built_in">buildTree</span>(pre_,in_);</span><br><span class="line">            &#125;   </span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>]]></content>
+      
+      
+      <categories>
+          
+          <category> 力扣hot100 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 二叉树 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>力扣hot100-17</title>
+      <link href="/2023/05/30/%E5%8A%9B%E6%89%A3hot100-17/"/>
+      <url>/2023/05/30/%E5%8A%9B%E6%89%A3hot100-17/</url>
+      
+        <content type="html"><![CDATA[<hr><h2 id="title-力扣hot100-17date-2023-05-30updated-2023-05-30categories-力扣hot100tags-二叉树cover-images-x2F-17-jpg"><a href="#title-力扣hot100-17date-2023-05-30updated-2023-05-30categories-力扣hot100tags-二叉树cover-images-x2F-17-jpg" class="headerlink" title="title: 力扣hot100-17date: 2023-05-30updated: 2023-05-30categories: 力扣hot100tags: 二叉树cover: images&#x2F;17.jpg"></a>title: 力扣hot100-17<br>date: 2023-05-30<br>updated: 2023-05-30<br>categories: 力扣hot100<br>tags: 二叉树<br>cover: images&#x2F;17.jpg</h2><h4 id="437-路径总和-III"><a href="#437-路径总和-III" class="headerlink" title="437. 路径总和 III"></a><a href="https://leetcode.cn/problems/path-sum-iii/">437. 路径总和 III</a></h4><p>给定一个二叉树的根节点 <code>root</code> ，和一个整数 <code>targetSum</code> ，求该二叉树里节点值之和等于 <code>targetSum</code> 的 <strong>路径</strong> 的数目。</p><p><strong>路径</strong> 不需要从根节点开始，也不需要在叶子节点结束，但是路径方向必须是向下的（只能从父节点到子节点）。</p><p><strong>示例 1：</strong></p><p><img src="https://assets.leetcode.com/uploads/2021/04/09/pathsum3-1-tree.jpg" alt="img"></p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">输入：root = [10,5,-3,3,2,null,11,3,-2,null,1], targetSum = 8</span><br><span class="line">输出：3</span><br><span class="line">解释：和等于 8 的路径有 3 条，如图所示。</span><br></pre></td></tr></table></figure><p><strong>示例 2：</strong></p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">输入：root = [5,4,8,11,null,13,4,7,2,null,null,5,1], targetSum = 22</span><br><span class="line">输出：3</span><br></pre></td></tr></table></figure><p><strong>思路：</strong></p><p>对于一个结点，使用dfs找到包含该节点的符合条件的集合</p><p>因为需要全部的，所以遍历所有节点即可</p><p><strong>代码：</strong></p><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Definition for a binary tree node.</span></span><br><span class="line"><span class="comment"> * struct TreeNode &#123;</span></span><br><span class="line"><span class="comment"> *     int val;</span></span><br><span class="line"><span class="comment"> *     TreeNode *left;</span></span><br><span class="line"><span class="comment"> *     TreeNode *right;</span></span><br><span class="line"><span class="comment"> *     TreeNode() : val(0), left(nullptr), right(nullptr) &#123;&#125;</span></span><br><span class="line"><span class="comment"> *     TreeNode(int x) : val(x), left(nullptr), right(nullptr) &#123;&#125;</span></span><br><span class="line"><span class="comment"> *     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) &#123;&#125;</span></span><br><span class="line"><span class="comment"> * &#125;;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="type">int</span> res=<span class="number">0</span>;</span><br><span class="line">    <span class="function"><span class="type">void</span> <span class="title">dfs</span><span class="params">(TreeNode* root,<span class="type">long</span> <span class="type">long</span> sum)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(root==<span class="literal">nullptr</span>) <span class="keyword">return</span>;</span><br><span class="line">        <span class="keyword">if</span>(sum-root-&gt;val==<span class="number">0</span>) res++;</span><br><span class="line">        <span class="built_in">dfs</span>(root-&gt;left,sum-root-&gt;val);</span><br><span class="line">        <span class="built_in">dfs</span>(root-&gt;right,sum-root-&gt;val);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="type">int</span> <span class="title">pathSum</span><span class="params">(TreeNode* root, <span class="type">long</span> <span class="type">long</span> targetSum)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(root==<span class="literal">nullptr</span>) <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        </span><br><span class="line">        <span class="built_in">dfs</span>(root,targetSum);</span><br><span class="line">        <span class="built_in">pathSum</span>(root-&gt;left,targetSum);</span><br><span class="line">        <span class="built_in">pathSum</span>(root-&gt;right,targetSum);</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>]]></content>
+      
+      
+      <categories>
+          
+          <category> 力扣hot100 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 二叉树 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>力扣hot100-15</title>
       <link href="/2023/05/11/%E5%8A%9B%E6%89%A3hot100-15/"/>
       <url>/2023/05/11/%E5%8A%9B%E6%89%A3hot100-15/</url>
